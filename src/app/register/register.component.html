@@ -1,0 +1,24 @@
+<div class="uk-position-center uk-overlay uk-overlay-default"  style="background:none" >
+    
+    <form [formGroup]="userForm" (ngSubmit)="register()">
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: user"></span>
+            <input class="uk-input" type="text"  id="user_name" formControlName="username" >
+        </div>
+    </div>
+    
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+            <input class="uk-input" type="password" id="password" formControlName="password" >
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-success" style="width: 100%;" [disabled]="!userForm.valid">S'inscrire</button>
+    <br>
+    <br>
+</form>
+
+</div>

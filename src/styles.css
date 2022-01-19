@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+html{
+    background-image: url(./assets/background1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100%;
+  
+}
