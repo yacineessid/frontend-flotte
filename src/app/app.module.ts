@@ -1,18 +1,28 @@
+
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http'
-import { ReactiveFormsModule , FormsModule} from '@angular/forms';
-import {MatDialogModule } from '@angular/material/dialog';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { HeaderComponent } from './header/header.component';
+import { AdministationComponent } from './administation/administation.component';
+import { GestionVehiculesComponent } from './gestion-vehicules/gestion-vehicules.component';
+import { EntretiensComponent } from './entretiens/entretiens.component';
+import { ReparationComponent } from './reparation/reparation.component';
+import { CarburantComponent } from './carburant/carburant.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
+
+
 
 
 
@@ -20,10 +30,15 @@ import { HeaderComponent } from './header/header.component';
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent,
+    LoginComponent ,
     UsersComponent,
     AcceuilComponent,
     HeaderComponent,
+    AdministationComponent,
+    GestionVehiculesComponent,
+    EntretiensComponent,
+    ReparationComponent,
+    CarburantComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +46,7 @@ import { HeaderComponent } from './header/header.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule,
-    BrowserAnimationsModule
- 
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,20 +1,20 @@
 <div class="uk-position-center uk-overlay uk-overlay-default"  style="background:none">
-    <form>
+    <form [formGroup]="loginForm" >
 
     <div class="uk-margin" >
         <div class="uk-inline">
-            <span class="uk-form-icon" uk-icon="icon: user"></span>
-            <input class="uk-input" type="text"  >
+            <span class="uk-form-icon" uk-icon="icon: mail"  ></span>
+            <input class="uk-input" type="email"  formControlName="email"  >
         </div>
     </div>
 
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="password">
+            <input class="uk-input" type="password"  formControlName="password">
         </div>
     </div>
-    <button type="submit" class="btn btn-success" style="width: 100%;" >login</button>
+    <button type="submit" class="btn btn-success" style="width: 100%;" (click)="login()"  >login</button>
     <br>
     
 </form>

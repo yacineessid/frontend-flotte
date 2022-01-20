@@ -1,4 +1,8 @@
-#home{
-    background-image: url(../../assets/background.jpg.crdownload);
-    background-size: cover;
+h1{
+    color:rgb(180, 195, 197);
+    text-align: center;
+}
+
+h1:hover{
+    background-color: darkgray;
 }

@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
 userForm =new  FormGroup({
   username:new FormControl('' ,Validators.required),
+  email:new FormControl('' ,Validators.required),
   password:new FormControl('',Validators.required)
 });
 
@@ -26,6 +27,7 @@ userForm =new  FormGroup({
 register(){
 this.as.postUser(this.userForm.value).subscribe((res)=>{
   console.log(res);
+  this.route.navigate(['/'])
   
 })
 
