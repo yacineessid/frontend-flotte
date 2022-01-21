@@ -30,7 +30,6 @@ this.as.postUser(this.userForm.value).subscribe((res)=>{
   this.route.navigate(['/'])
   
 })
-
   
 }
   

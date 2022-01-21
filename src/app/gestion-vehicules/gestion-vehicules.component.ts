@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup} from '@angular/forms';
+import { VehiculeServiceService } from '../services/VehiculeService';
 
 @Component({
   selector: 'app-gestion-vehicules',
@@ -12,7 +13,7 @@ export class GestionVehiculesComponent implements OnInit {
   vehiculeForm:FormGroup=this.createForm()
    data:any=[]
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder , private vs:VehiculeServiceService) { 
 
 }
 
@@ -30,10 +31,24 @@ createForm(form?:any):FormGroup{
 
   ngOnInit(): void {
 
+this.getVehicule()
+
   }
   ajouter(){
+   
+    this.vs.postVehicule(this.vehiculeForm.value).subscribe((res)=>{
+      console.log(res);  
+      this.getVehicule()
+    })
+  }
 
-    
+  getVehicule(){
+    this.vs.getAllVehicules().subscribe((res)=>{
+      console.log(res);
+      this.data=res
+
+      
+    })
   }
 
 }
