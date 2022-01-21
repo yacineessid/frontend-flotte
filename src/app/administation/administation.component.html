@@ -1,24 +1,31 @@
-<div class="container">
-<h1 style="text-align: center;">les employés</h1>
+<div class="container" >
+  <br><br>
+<h1 style="text-align: center; background-color: rgb(182, 176, 176);">Conducteurs</h1>
 <br><br>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajoutmodal">
     ajouter
   </button>
-    <table   class="uk-table uk-table-small uk-table-striped">
+    <table   class="uk-table uk-table-small uk-table-striped ">
         <thead>
             <tr >
                 <th>Nom</th>
+                <th>Prénom</th>
                 <th>Email</th>
-                <th>téléphone</th>
+                <th>Téléphone</th>
+                <th>Date d'entrée</th>
+                <th>Date de sortie</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of data ">
                 <td>{{data.nom}} </td>
+                <td>{{data.prenom}}</td>
                 <td>{{data.email}}</td>
                 <td>{{data.telephone}}</td>
-                <button class="btn btn-success">modifier</button>
-                <button class="btn btn-danger">supprimer</button>
+                <td>{{data.dateEntree}}</td>
+                <td>{{data.dateSortie}}</td>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ajoutmodal" (click)="modifier(data)">modifier</button>         
+                <button class="btn btn-danger" (click)="deleteCond(data.id)">supprimer</button>
             </tr>
           
     
@@ -34,13 +41,16 @@
         </div>
         <div [formGroup]="conducteurForm" class="modal-body">
          <input type="text"  placeholder="nom" formControlName="nom">
+         <input type="text" placeholder="prénom" formControlName="prenom">
          <input type="email" placeholder="email" formControlName="email">
          <input type="text" placeholder="téléphone" formControlName="telephone">
-
+         <input type="text" placeholder="date d'entrée" formControlName="dateEntree">
+         <input type="text" placeholder="date de sortie" formControlName="dateSortie">
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="ajouter()">sauvegarder</button>
+          <button type="button" class="btn btn-primary" (click)="ajouter()">ajouter</button>
+          <button type="button" class="btn btn-primary" (click)="sauvegarder()">sauvegarder</button>
         </div>
       </div>
     </div>

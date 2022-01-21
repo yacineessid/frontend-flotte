@@ -1,1 +1,67 @@
-<p>gestion-vehicules works!</p>
+<div class="container"><br><br>
+<h1 style="text-align: center;">gestion-véhicules </h1>
+<br><br>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
+  nouveau véhicule
+  </button>
+<table   class="uk-table uk-table-small uk-table-striped ">
+    <thead>
+        <tr  >
+            <th>matricule</th>
+            <th>marque</th>
+            <th>modèle</th>
+            <th>aquisition</th>
+            <th>visite</th>
+            <th>assurance</th>
+             <th>carburant</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of data">
+            <td> {{data.matricule}}</td>
+            <td>{{data.marque}}</td>
+            <td>{{data.modele}}</td>
+            <td>{{data.aquisition}}</td>
+            <td>{{data.visite}}</td>
+            <td>{{data.assurance}}</td>
+            <td>{{data.carburant}}</td>
+        </tr>
+
+
+        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div  [formGroup]="vehiculeForm" class="modal-body">
+                    <input type="text" class="form-control" placeholder="matricule" formControlName="matricule">
+                    <input type="text" class="form-control" placeholder="marque" formControlName="marque">
+                    <input type="text" class="form-control" placeholder="modele" formControlName="modele">
+                    <input type="date" class="form-control" placeholder="aquisition"formControlName=aquisition>
+                    <input type="date" class="form-control" placeholder="visite" formControlName="visite">
+                    <input type="date" class="form-control" placeholder="assurance" formControlName="assurance">
+            
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="carburant">
+                      
+                        <option selected >carburant</option>
+                        <option value="1">essence</option>
+                        <option value="2">gazole</option>
+              
+                      </select>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+        
+
+
+
+
+        </div>

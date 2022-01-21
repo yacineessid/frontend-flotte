@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ConServiceService {
+export class CondService {
 
   constructor(private _http:HttpClient) { }
 apiUrl='http://localhost:3000/conducteur'
@@ -19,11 +19,11 @@ getOneConducteur(id:number,body:Object):Observable<any>{
 }
 
 postConducteur(body:object):Observable<any>{
-  return this._http.get(`${this.apiUrl}`,body)
+  return this._http.post(`${this.apiUrl}`,body)
 
 }
 
-updateConducteur(id:number, body:object){
+updateConducteur(id:number,body:object):Observable<any>{
   return this._http.put(`${this.apiUrl}/${id}`,body)
 }
 
