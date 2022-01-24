@@ -20,15 +20,18 @@
     </thead>
     <tbody>
         <tr *ngFor="let data of data">
-            <td> {{data.matricule}}</td>
-            <td>{{data.marque}}</td>
-            <td>{{data.modele}}</td>
+            <td>{{data.matricule}}</td>
+            <td>{{data.marque_Voiture.libelle}}</td>
+            <td>{{data.modele_Voiture.libelle}}</td>
             <td>{{data.aquisition}}</td>
             <td>{{data.visite}}</td>
             <td>{{data.assurance}}</td>
             <td>{{data.carburant}}</td>
+            <button type="button" class="btn btn-success"   data-bs-toggle="modal" data-bs-target="#Modal" (click)="modifier(data)">modifier</button>         
+            <button class="btn btn-danger" (click)="delete(data.id)">supprimer</button>
+    
         </tr>
-
+    
 
         <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -39,15 +42,30 @@
                 </div>
                 <div  [formGroup]="vehiculeForm" class="modal-body">
                     <input type="text" class="form-control" placeholder="matricule" formControlName="matricule">
-                    <input type="text" class="form-control" placeholder="marque" formControlName="marque">
-                    <input type="text" class="form-control" placeholder="modele" formControlName="modele">
+
+
+           
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="idMarque">
+                      
+                      <option *ngFor="let marque of marques" [value]="marque.id" selected >{{marque.libelle}}</option>
+                      
+                    </select>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="idModele">
+                      
+                      <option *ngFor="let modele of modeles" [value]="modele.id" selected >{{modele.libelle}}</option>
+                      
+                    </select>
+
+
                     <input type="text" class="form-control" placeholder=" date d'aquisition"formControlName="aquisition">
-                    <input type="text" class="form-control" placeholder="date devisite" formControlName="visite">
+
+                    <input type="text" class="form-control" placeholder="date de visite" formControlName="visite">
+
                     <input type="text" class="form-control" placeholder="date d'assurance" formControlName="assurance">
             
                     <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="carburant">
                       
-                        <option selected >carburant</option>
+                        <option selected  >carburant</option>
                         <option value="essence">essence</option>
                         <option value="gazole">gazole</option>
               
@@ -57,6 +75,9 @@
                  
     
                   <button type="button" class="btn btn-primary" (click)="ajouter()">ajouter</button>
+                  
+                  <button type="button" class="btn btn-primary" (click)="sauvegarder()">sauvegarder</button>
+                  
                 </div>
               </div>
             </div>

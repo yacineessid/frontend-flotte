@@ -10,8 +10,11 @@ import { VehiculeServiceService } from '../services/VehiculeService';
 export class GestionVehiculesComponent implements OnInit {
   
   
-  vehiculeForm:FormGroup=this.createForm()
+   vehiculeForm:FormGroup=this.createForm()
    data:any=[]
+   modeles:any=[]
+   marques:any=[]
+   id:number=0
 
   constructor(private fb:FormBuilder , private vs:VehiculeServiceService) { 
 
@@ -19,19 +22,21 @@ export class GestionVehiculesComponent implements OnInit {
 
 createForm(form?:any):FormGroup{
   return this.fb.group({
-  matricule:form?form.nom:"",
-  marque:form?form.marque:"",
-  modele:form?form.modele:"",
+  matricule:form?form.matricule:"",
+  idMarque:form?form.idMarque:"1",
+  idModele:form?form.idModele:"1",
   aquisition:form?form.aquisition:"",
   visite:form?form.visite:"",
   assurance:form?form.assurance:"",
-  carburant:form?form.carburant:"",
+  carburant:form?form.carburant:"carburant",
   })
  }
 
   ngOnInit(): void {
 
 this.getVehicule()
+this.getModele()
+this.getMarque()
 
   }
   ajouter(){
@@ -47,6 +52,42 @@ this.getVehicule()
       console.log(res);
       this.data=res
 
+      
+    })
+  }
+
+  getMarque(){
+    this.vs.getMaqueVehicule().subscribe((res)=>{
+      console.log(res);
+      this.marques=res
+    })
+  }
+
+  getModele(){
+    this.vs.getModeleVehicule().subscribe((res)=>{
+      console.log(res);
+      this.modeles=res
+      
+    })
+  }
+
+  modifier(data:any){
+
+    this.vehiculeForm=this.createForm(data)
+    this.id= data.id
+  }
+
+  sauvegarder(){
+    this.vs.updateVehicule(this.id , this.vehiculeForm.value).subscribe(()=>{
+     
+      this.getVehicule()
+    })
+  }
+
+  delete(id:number){
+    this.vs.deleteVehicule(id).subscribe((res)=>{
+      console.log('vehicule deleted');
+      this.getVehicule()
       
     })
   }

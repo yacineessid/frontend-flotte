@@ -9,6 +9,8 @@ export class VehiculeServiceService {
 
   constructor(private _http:HttpClient) { }
   apiUrl='http://localhost:3000/voiture'
+  apiMarque='http://localhost:3000/marque'
+  apiModele='http://localhost:3000/modele'
 
   getAllVehicules():Observable<any>{
 
@@ -31,6 +33,19 @@ deleteVehicule(id:number):Observable<any>{
 
   return this._http.delete(`${this.apiUrl}/${id}`)
 }
+
+
+getMaqueVehicule():Observable<any>{
+
+  return this._http.get(`${this.apiMarque}`)
+}
+
+
+getModeleVehicule():Observable<any>{
+
+  return this._http.get(`${this.apiModele}`)
+}
+
 }
 
   
