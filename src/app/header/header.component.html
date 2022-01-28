@@ -6,10 +6,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="text-align: center;">
-        <div class="navbar-nav">
+        <div class="navbar-nav mx-auto">
           <a class="nav-link" routerLink="/"> home</a>
-          <a class="nav-link" routerLink="/login">login</a>
-          <a class="nav-link" routerLink="/register">register</a>
+          <a class="nav-link" routerLink="/login" *ngIf="!user">login</a>
+          <a class="nav-link" routerLink="/register"*ngIf="!user">register</a>
+          <a class="nav-link" (click)="logOut()" *ngIf="user" >logout</a>
+        
          
         </div>
       </div>

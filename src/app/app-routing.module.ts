@@ -9,6 +9,7 @@ import { GestionVehiculesComponent } from './gestion-vehicules/gestion-vehicules
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReparationComponent } from './reparation/reparation.component';
+import { TransportComponent } from './transport/transport.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'carburant', component:CarburantComponent},
   {path:'gestionVehicule', component:GestionVehiculesComponent},
   {path:'reparation', component:ReparationComponent},
+  {path:'transport', component:TransportComponent},
   {path:'',component:AcceuilComponent},
 ];
 

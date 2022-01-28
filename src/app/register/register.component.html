@@ -10,15 +10,23 @@
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: mail"></span>
-            <input class="uk-input" type="email"  id="email" formControlName="email" >
+            <input class="uk-input" type="email" formControlName="email" >
+            <p class="alert alert-danger" *ngIf="userForm.get('email')?.errors?.['email']">
+                password must be email form
+            </p>
         </div>
     </div>
     
     <div class="uk-margin">
         <div class="uk-inline">
             <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-            <input class="uk-input" type="password" id="password" formControlName="password" >
+            <input class="uk-input" type="password" id="password" formControlName="password"  >
         </div>
+
+
+    <p class="alert alert-danger" *ngIf="userForm.get('password')?.errors?.['minlength']">
+        password must be +8 caracters
+    </p>
     </div>
 
 

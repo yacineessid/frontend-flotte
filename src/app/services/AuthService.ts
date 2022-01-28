@@ -27,6 +27,12 @@ apiUrl='http://localhost:3000/user'
     return this._http.get(`${this.apiUrl}/${id}`,body)
   }
 
+  //get log UsersComponent
+
+  logUser(body:object):Observable<any>{
+    return  this._http.post(`${this.apiUrl}/login`,body)
+  }
+  
   //post data
    postUser(body:Object):Observable<any>{
     

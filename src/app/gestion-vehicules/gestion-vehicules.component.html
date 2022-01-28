@@ -1,11 +1,11 @@
-<div class="container"><br><br>
-<h1 style="text-align: center;">gestion-véhicules </h1>
+<div class="uk-position-center uk-overlay uk-overlay-default"  style="background-color: rgb(78, 73, 71);opacity: 0.9;border-radius: 10%;  " >
+<h1>gestion-véhicules </h1>
 <br><br>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">
-  nouveau véhicule
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#Modal" (click)="show=false">
+  <i class="fas fa-car"></i>
   </button>
-<table   class="uk-table uk-table-small uk-table-striped ">
+<table   class="uk-table  uk-table-responsive ">
     <thead>
         <tr  >
             <th>matricule</th>
@@ -27,11 +27,13 @@
             <td>{{data.visite}}</td>
             <td>{{data.assurance}}</td>
             <td>{{data.carburant}}</td>
-            <button type="button" class="btn btn-success"   data-bs-toggle="modal" data-bs-target="#Modal" (click)="modifier(data)">modifier</button>         
-            <button class="btn btn-danger" (click)="delete(data.id)">supprimer</button>
-    
+            <button type="button" class="btn btn-success"   data-bs-toggle="modal" data-bs-target="#Modal" (click)="modifier(data) ;show=true"><i class="fas fa-edit"></i></button>         
+            <button class="btn btn-danger" (click)="delete(data.id)"><i class="fas fa-trash-alt"></i></button>
+
         </tr>
-    
+    </tbody>
+    </table>
+</div>
 
         <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -74,16 +76,13 @@
                 <div class="modal-footer">
                  
     
-                  <button type="button" class="btn btn-primary" (click)="ajouter()">ajouter</button>
+                  <button type="button" class="btn btn-primary" (click)="ajouter()" *ngIf="!show" [disabled]=""><i class="fas fa-plus"></i></button>
                   
-                  <button type="button" class="btn btn-primary" (click)="sauvegarder()">sauvegarder</button>
+                  <button type="button" class="btn btn-primary" (click)="sauvegarder()" *ngIf="show"><i class="far fa-save"></i></button>
                   
                 </div>
               </div>
             </div>
         
 
-
-
-
-        </div>
+          </div>

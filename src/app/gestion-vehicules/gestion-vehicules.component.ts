@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup} from '@angular/forms';
+import { Subject } from 'rxjs';
 import { VehiculeServiceService } from '../services/VehiculeService';
 
 @Component({
@@ -7,7 +8,7 @@ import { VehiculeServiceService } from '../services/VehiculeService';
   templateUrl: './gestion-vehicules.component.html',
   styleUrls: ['./gestion-vehicules.component.css']
 })
-export class GestionVehiculesComponent implements OnInit {
+export class GestionVehiculesComponent implements OnInit ,OnDestroy {
   
   
    vehiculeForm:FormGroup=this.createForm()
@@ -15,7 +16,10 @@ export class GestionVehiculesComponent implements OnInit {
    modeles:any=[]
    marques:any=[]
    id:number=0
-
+   show=false
+ 
+  
+   private _unsubscribeAll:Subject<any>=new Subject()
   constructor(private fb:FormBuilder , private vs:VehiculeServiceService) { 
 
 }
@@ -91,5 +95,11 @@ this.getMarque()
       
     })
   }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next(true)
+    this._unsubscribeAll.complete()
+    
+}
 
 }

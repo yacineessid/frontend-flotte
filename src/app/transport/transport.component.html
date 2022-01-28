@@ -1,0 +1,73 @@
+<div class="uk-position-center uk-overlay uk-overlay-default"  style="background-color: rgb(75, 72, 71); opacity: 0.9;border-radius: 10%;" >
+    <h1>Transport</h1>
+  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#Modal"  (click)="show=false">
+    <i class="fas fa-plus"></i>
+      </button>  <br><br>
+      <table  class="uk-table  uk-table-responsive">
+          <thead>
+              <tr  >
+                  <th>conducteur</th>
+                  <th>matricule</th>
+                  <th>adresse</th>
+                  <th>date</th>
+                 
+                  
+              </tr>
+          </thead>
+          <tbody  >
+              <tr *ngFor="let data of transport"  >
+                  <td>{{data.conducteur?.nom}}</td>
+                  <td>{{data.voiture?.matricule}}</td> 
+                  <td>{{data.adresse}}</td>
+                  <td>{{data.date | date: 'dd/MM/yyyy'}}</td>
+                  
+                
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#Modal" (click)=" modifier(data) ;show=true"><i class="fas fa-edit"></i></button>    
+                 <button class="btn btn-danger" (click)="supprimer(data.id)"><i class="fas fa-trash-alt"></i></button>
+           
+                 
+              </tr>
+              
+          </tbody>
+      </table>
+  </div>
+  
+          <div  class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                   
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div [formGroup]="transportForm" class="modal-body">
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="idConducteur">
+                       
+                        
+                        <option *ngFor="let data of conducteurs" [value]="data.id" selected >{{data.nom}}</option>  </select>
+
+
+                        
+                      <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="idMatricule">
+                       
+                        
+                          <option *ngFor="let data of matricules" [value]="data.id" selected >{{data.matricule}}</option>  </select>
+                          
+                       
+            
+    
+                    <input type="text" class="form-control"  placeholder="adresse" formControlName="adresse">
+                    
+                    <input type="date" class="form-control" placeholder="date" formControlName="date">
+
+          
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" (click)="ajouterTransport()"*ngIf="!show"><i class="fas fa-plus"></i></button>
+                    <button type="button" class="btn btn-primary" (click)="sauvegarder()" *ngIf="show"><i class="far fa-save"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+  

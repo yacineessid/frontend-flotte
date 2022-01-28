@@ -1,11 +1,11 @@
-<div class="container" >
+<div class="uk-position-center uk-overlay uk-overlay-default"  style="background-color: rgb(78, 73, 71); opacity: 0.9; border-radius: 10%;" >
   <br><br>
-<h1 style="text-align: center; background-color: rgb(182, 176, 176);">Conducteurs</h1>
+<h1 >Conducteurs</h1>
 <br><br>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajoutmodal">
-    ajouter
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ajoutmodal"  (click)="show=false" >
+  <i class="fas fa-plus"></i>
   </button>
-    <table   class="uk-table uk-table-small uk-table-striped ">
+    <table   class="uk-table  uk-table-responsive ">
         <thead>
             <tr >
                 <th>Nom</th>
@@ -24,38 +24,40 @@
                 <td>{{data.telephone}}</td>
                 <td>{{data.dateEntree}}</td>
                 <td>{{data.dateSortie}}</td>
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ajoutmodal" (click)="modifier(data)">modifier</button>         
-                <button class="btn btn-danger" (click)="deleteCond(data.id)">supprimer</button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ajoutmodal" (click)=" show=true ; modifier(data)"><i class="fas fa-edit"></i></button>         
+                <button class="btn btn-danger" (click)="deleteCond(data.id)"><i class="fas fa-trash-alt"></i></button>
             </tr>
           
     
         </tbody>
     
 </table>
-<div  class="modal fade" id="ajoutmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-         
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div [formGroup]="conducteurForm" class="modal-body">
-          <input type="text"  placeholder="nom" formControlName="nom">
-          <input type="text"  placeholder="prénom" formControlName="prenom">
-          <input type="email"  placeholder="email" formControlName="email">
-          <input type="text" placeholder="téléphone" formControlName="telephone">
-          <input type="text" placeholder="date d'entrée" formControlName="dateEntree">
-          <input type="text" placeholder="date de sortie" formControlName="dateSortie">
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="ajouter()">ajouter</button>
-          <button type="button" class="btn btn-primary" (click)="sauvegarder()">sauvegarder</button>
-        </div>
+</div>
+
+
+<div  class="modal fade" id="ajoutmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div [formGroup]="conducteurForm" class="modal-body">
+        <input type="text" class="form-control"  placeholder="nom" formControlName="nom">
+        <input type="text" class="form-control"  placeholder="prénom" formControlName="prenom">
+        <input type="email" class="form-control"   placeholder="email" formControlName="email">
+        <input type="text" class="form-control"  placeholder="téléphone" formControlName="telephone">
+        <input type="date" class="form-control"  placeholder="date d'entrée" formControlName="dateEntree">
+        <input type="date" class="form-control"  placeholder="date de sortie" formControlName="dateSortie">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="ajouter()" *ngIf="!show"><i class="fas fa-plus"></i></button>
+        <button type="button" class="btn btn-primary" (click)="sauvegarder()" *ngIf="show"><i class="far fa-save"></i></button>
       </div>
     </div>
   </div>
 </div>
-
 
 

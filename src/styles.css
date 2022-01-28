@@ -10,3 +10,33 @@ html{
   
 }
 
+h1{
+    color:rgb(255, 255, 255);
+    text-align: center;
+}
+
+
+thead{
+    color:rgba(243, 79, 29, 0.87);
+    text-align: center;
+}
+
+tr{
+    text-align: center;
+}
+
+
+tbody{
+
+    color:white;
+    text-align: center;
+}
+
+.btn{
+  
+    width: 50px;
+    margin-top: 10px
+    ;
+
+   margin: 5px
+}

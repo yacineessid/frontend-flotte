@@ -23,6 +23,8 @@ import { CarburantComponent } from './carburant/carburant.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TransportComponent } from './transport/transport.component';
+
 
 
 
@@ -42,6 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EntretiensComponent,
     ReparationComponent,
     CarburantComponent,
+    TransportComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

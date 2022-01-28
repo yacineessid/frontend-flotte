@@ -15,6 +15,8 @@ export class AdministationComponent implements OnInit {
   conducteurForm:FormGroup=this.createForm()
   data:any=[]
   id:number=0
+  show=false
+
   constructor(private cd:CondService,  private fb: FormBuilder , public mt:MatDialog) { 
 
   }

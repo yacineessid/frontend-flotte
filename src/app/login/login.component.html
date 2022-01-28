@@ -5,6 +5,7 @@
         <div class="uk-inline">
             <span class="uk-form-icon" uk-icon="icon: mail"  ></span>
             <input class="uk-input" type="email"  formControlName="email"  >
+            <p class="alert alert-danger" *ngIf="loginForm.get('email')?.errors.invalid">this email does not exist</p>
         </div>
     </div>
 
@@ -15,6 +16,7 @@
         </div>
     </div>
     <button type="submit" class="btn btn-success" style="width: 100%;" (click)="login()"  >login</button>
+
     <br>
     
 </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,  FormGroup , Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/AuthService';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm:any= FormGroup;
   isSubmitted  =  false;
 
-  constructor(private fb:FormBuilder, private route:Router ) { }
+
+  constructor(private fb:FormBuilder, private route:Router , private auth :AuthService) { }
 
   ngOnInit(): void {
     this.loginForm  =  this.fb.group({
@@ -23,8 +25,12 @@ export class LoginComponent implements OnInit {
   }
   get formControls() { return this.loginForm.controls; }
 
-login(){
 
-}
+ login(){
 
+   this.auth.logUser(this.loginForm.value).subscribe(()=>{
+     this.route.navigate(['/'])
+     localStorage.setItem('userConnect' , JSON.stringify(true))
+   })
+ }
 }
