@@ -1,5 +1,5 @@
 
-<div class="uk-position-center uk-overlay uk-overlay-default"  style="background-color: rgb(78, 73, 71);opacity: 0.9; border-radius: 10%; " >
+<div class="uk-position-center uk-overlay uk-overlay-default"  style="background-color: rgb(17, 17, 16);opacity: 0.9; border-radius: 10%; " >
   <h1>Consommation carburant</h1>
 <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#Modal"  (click)="show=false">
   <i class="fas fa-plus"></i> 
@@ -28,7 +28,7 @@
                 <td>{{data.quantiteLitre}}</td>
                 <td>{{data.coutTotal}}</td>
                 <td>{{data.coutLitre}}</td>         
-                <button class="btn btn-danger" (click)="supprimer(data.id)" >supprimer</button>
+                <button class="btn btn-danger" (click)="supprimer(data.id)" ><i class="fas fa-trash-alt"></i></button>
             </tr>
             
         </tbody>
